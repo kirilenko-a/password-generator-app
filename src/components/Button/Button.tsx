@@ -1,4 +1,5 @@
 import type { ButtonProps } from "../../types/ButtonProps";
+import { Icon } from "../Icon";
 
 export const Button = ({ title }: ButtonProps) => {
   return (
@@ -7,7 +8,7 @@ export const Button = ({ title }: ButtonProps) => {
       className="flex w-full cursor-pointer items-center justify-center gap-4 bg-green-200 py-4.5 leading-5 font-bold"
     >
       {title}
-      <img src="/images/icon-arrow-right.svg" alt="" />
+      <Icon path="/images/icon-arrow-right.svg" />
     </button>
   );
 };
