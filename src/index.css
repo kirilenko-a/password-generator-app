@@ -54,3 +54,23 @@
   font-weight: 700;
   line-height: 1.25rem;
 }
+
+@utility range-input {
+  appearance: none;
+
+  &::-webkit-slider-thumb {
+    appearance: none;
+    width: 1.75rem;
+    height: 1.75rem;
+    background-color: var(--color-grey-200);
+    border-radius: 50%;
+  }
+
+  &::-moz-range-thumb {
+    appearance: none;
+    width: 1.75rem;
+    height: 1.75rem;
+    background-color: var(--color-grey-200);
+    border-radius: 50%;
+  }
+}
