@@ -1,18 +1,11 @@
 import { Button } from "../Button";
 import { CharacterLength } from "../CharacterLength";
-import { Checkbox } from "../Checkbox";
+import { CheckboxList } from "../CheckboxList";
 import { StrengthField } from "../StrengthField";
 
 export const SettingsSection = () => {
-  const settings = [
-    "Include Uppercase Letters",
-    "Include Lowercase Letters",
-    "Include Numbers",
-    "Include Symbols",
-  ];
-
   return (
-    <section className="bg-grey-800 grid gap-8 p-4">
+    <section className="bg-grey-800 grid gap-8 p-4 md:px-8 md:py-6">
       <CharacterLength
         label="Character Length"
         id="choice"
@@ -22,14 +15,7 @@ export const SettingsSection = () => {
         max={20}
       />
 
-      {settings.map((setting, index) => (
-        <Checkbox
-          label={setting}
-          id={String(index)}
-          key={index}
-          name={setting}
-        />
-      ))}
+      <CheckboxList />
 
       <StrengthField />
       <Button title="GENERATE" />

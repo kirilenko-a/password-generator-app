@@ -9,13 +9,13 @@ export const CharacterLength = ({
   max,
 }: CharacterLengthProps) => {
   return (
-    <div className="flex flex-col gap-3.5 py-5.5">
+    <div className="flex flex-col gap-3.5">
       <div className="flex items-center justify-between">
-        <label htmlFor={id} className="preset-4 text-grey-200">
+        <label htmlFor={id} className="preset-4 text-grey-200 md:preset-3">
           {label}
         </label>
 
-        <p className="preset-2 text-green-200">{counter}</p>
+        <p className="preset-2 md:preset-1 text-green-200">{counter}</p>
       </div>
       <input
         type="range"

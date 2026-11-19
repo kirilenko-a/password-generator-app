@@ -11,7 +11,7 @@ export const Checkbox = ({ label, id, name }: CheckboxProps) => {
       />
       <label
         htmlFor={id}
-        className="text-grey-200 preset-4 cursor-pointer leading-5"
+        className="text-grey-200 preset-4 md:preset-3 cursor-pointer leading-5"
       >
         {label}
       </label>
