@@ -4,7 +4,7 @@ import { Icon } from "../Icon";
 export const PasswordField = ({ password }: PasswordFieldProps) => {
   return (
     <div className="bg-grey-800 flex items-center justify-between p-4">
-      <p className="text-grey-700 text-[24px] leading-8 font-bold">
+      <p className="text-grey-700 preset-2 text-[24px] leading-8 font-bold">
         {password}
       </p>
 
