@@ -5,5 +5,5 @@ export interface CharacterLengthProps {
   id: string;
   min: number;
   max: number;
-  handleChange: (input: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }

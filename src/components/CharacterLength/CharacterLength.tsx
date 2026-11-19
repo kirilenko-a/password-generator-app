@@ -7,7 +7,7 @@ export const CharacterLength = ({
   min,
   max,
   counter,
-  handleChange,
+  onChange,
 }: CharacterLengthProps) => {
   const fillRate = ((counter - min) / (max - min)) * 100;
 
@@ -31,7 +31,7 @@ export const CharacterLength = ({
         style={{
           background: `linear-gradient(to right, var(--color-green-200) ${fillRate}%, var(--color-grey-850) ${fillRate}%)`,
         }}
-        onChange={handleChange}
+        onChange={onChange}
       />
     </div>
   );

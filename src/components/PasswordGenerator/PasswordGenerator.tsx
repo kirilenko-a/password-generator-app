@@ -15,7 +15,7 @@ export const PasswordGenerator = () => {
       <div className="grid gap-4 self-center md:w-135 md:gap-8 md:justify-self-center">
         <AppTitle title="Password Generator" />
         <PasswordField password="P4$5W0rD!" />
-        <SettingsSection counter={lengthCounter} handleChange={handleChange} />
+        <SettingsSection counter={lengthCounter} onChange={handleChange} />
       </div>
     </main>
   );

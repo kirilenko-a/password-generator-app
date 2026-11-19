@@ -6,7 +6,7 @@ import { StrengthField } from "../StrengthField";
 
 export const SettingsSection = ({
   counter,
-  handleChange,
+  onChange,
 }: SettingsSectionProps) => {
   return (
     <section className="bg-grey-800 grid gap-8 p-4 md:px-8 md:py-6">
@@ -17,7 +17,7 @@ export const SettingsSection = ({
         min={1}
         max={20}
         counter={counter}
-        handleChange={handleChange}
+        onChange={onChange}
       />
 
       <CheckboxList />
