@@ -23,7 +23,7 @@ export const CharacterLength = ({
         id={id}
         min={min}
         max={max}
-        className="bg-grey-850 range-input h-2 w-full"
+        className="bg-grey-850 range-input h-2 w-full cursor-pointer"
       />
     </div>
   );
