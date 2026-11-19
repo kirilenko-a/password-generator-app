@@ -9,7 +9,7 @@ export const CharacterLength = ({
   max,
 }: CharacterLengthProps) => {
   return (
-    <div className="bg-grey-800 flex flex-col gap-3.5 py-5.5">
+    <div className="flex flex-col gap-3.5 py-5.5">
       <div className="flex items-center justify-between">
         <label htmlFor={id} className="preset-4 text-grey-200">
           {label}
