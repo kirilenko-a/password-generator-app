@@ -2,12 +2,15 @@ import type { CharacterLengthProps } from "../../types/CharacterLengthProps";
 
 export const CharacterLength = ({
   label,
-  counter,
   name,
   id,
   min,
   max,
+  counter,
+  handleChange,
 }: CharacterLengthProps) => {
+  const fillRate = ((counter - min) / (max - min)) * 100;
+
   return (
     <div className="flex flex-col gap-3.5">
       <div className="flex items-center justify-between">
@@ -23,7 +26,12 @@ export const CharacterLength = ({
         id={id}
         min={min}
         max={max}
-        className="bg-grey-850 range-input h-2 w-full cursor-pointer"
+        value={counter}
+        className="range-input h-2 w-full cursor-pointer"
+        style={{
+          background: `linear-gradient(to right, var(--color-green-200) ${fillRate}%, var(--color-grey-850) ${fillRate}%)`,
+        }}
+        onChange={handleChange}
       />
     </div>
   );
