@@ -27,3 +27,30 @@
   --spacing-2200: 11rem;
   --spacing-2300: 11.5rem;
 }
+
+@utility preset-1 {
+  font-family: "JetBrains Mono", sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 2.625rem;
+}
+
+@utility preset-2 {
+  font-family: "JetBrains Mono", sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+@utility preset-3 {
+  font-family: "JetBrains Mono", sans-serif;
+  font-weight: 700;
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+}
+
+@utility preset-4 {
+  font-family: "JetBrains Mono", sans-serif;
+  font-weight: 700;
+  line-height: 1.25rem;
+}
