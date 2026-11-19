@@ -1,6 +1,6 @@
 export const StrengthField = () => {
   return (
-    <div className="flex items-center justify-between">
+    <div className="bg-grey-850 flex items-center justify-between px-4 py-3.5">
       <p className="text-grey-600 preset-4">STRENGTH</p>
 
       <div className="flex gap-2">
