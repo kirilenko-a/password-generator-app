@@ -2,7 +2,7 @@ import type { CheckboxProps } from "../../types/CheckboxProps";
 
 export const Checkbox = ({ label, id, name }: CheckboxProps) => {
   return (
-    <div className="flex items-center gap-4 bg-black">
+    <div className="flex items-center gap-4">
       <input
         type="checkbox"
         name={name}
