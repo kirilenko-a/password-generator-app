@@ -1,4 +1,4 @@
-import { useLengthCounterStore } from "../../store/passwordStore";
+import { usePasswordStore } from "../../store/passwordStore";
 import type { CharacterLengthProps } from "../../types/CharacterLengthProps";
 
 export const CharacterLength = ({
@@ -8,9 +8,13 @@ export const CharacterLength = ({
   min,
   max,
 }: CharacterLengthProps) => {
-  const counter = useLengthCounterStore((store) => store.counter);
-  const updateCounter = useLengthCounterStore((store) => store.updateCounter);
+  const counter = usePasswordStore((store) => store.counter);
+  const updateCounter = usePasswordStore((store) => store.updateCounter);
   const fillRate = ((counter - min) / (max - min)) * 100;
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    updateCounter(event.target.valueAsNumber);
+  };
 
   return (
     <div className="flex flex-col gap-3.5">
@@ -32,7 +36,7 @@ export const CharacterLength = ({
         style={{
           background: `linear-gradient(to right, var(--color-green-200) ${fillRate}%, var(--color-grey-850) ${fillRate}%)`,
         }}
-        onChange={updateCounter}
+        onChange={handleChange}
       />
     </div>
   );

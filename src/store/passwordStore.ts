@@ -2,11 +2,10 @@ import { create } from "zustand";
 
 interface LengthCounterState {
   counter: number;
-  updateCounter: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  updateCounter: (value: number) => void;
 }
 
-export const useLengthCounterStore = create<LengthCounterState>((set) => ({
+export const usePasswordStore = create<LengthCounterState>((set) => ({
   counter: 1,
-  updateCounter: (event) =>
-    set(() => ({ counter: event.target.valueAsNumber })),
+  updateCounter: (value) => set({ counter: value }),
 }));
