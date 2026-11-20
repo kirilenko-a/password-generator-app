@@ -1,3 +1,4 @@
+import { useLengthCounterStore } from "../../store/passwordStore";
 import type { CharacterLengthProps } from "../../types/CharacterLengthProps";
 
 export const CharacterLength = ({
@@ -6,9 +7,9 @@ export const CharacterLength = ({
   id,
   min,
   max,
-  counter,
-  onChange,
 }: CharacterLengthProps) => {
+  const counter = useLengthCounterStore((store) => store.counter);
+  const updateCounter = useLengthCounterStore((store) => store.updateCounter);
   const fillRate = ((counter - min) / (max - min)) * 100;
 
   return (
@@ -31,7 +32,7 @@ export const CharacterLength = ({
         style={{
           background: `linear-gradient(to right, var(--color-green-200) ${fillRate}%, var(--color-grey-850) ${fillRate}%)`,
         }}
-        onChange={onChange}
+        onChange={updateCounter}
       />
     </div>
   );
