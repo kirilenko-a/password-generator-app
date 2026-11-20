@@ -1,21 +1,11 @@
 import { Checkbox } from "../Checkbox";
+import { passwordSettings } from "../../constants/passwordSettings";
 
 export const CheckboxList = () => {
-  const settings = [
-    "Include Uppercase Letters",
-    "Include Lowercase Letters",
-    "Include Numbers",
-    "Include Symbols",
-  ];
   return (
     <section className="flex flex-col gap-4">
-      {settings.map((setting, index) => (
-        <Checkbox
-          label={setting}
-          id={String(index)}
-          key={index}
-          name={setting}
-        />
+      {passwordSettings.map(({ label, id }) => (
+        <Checkbox label={label} id={id} key={id} name={id} />
       ))}
     </section>
   );
