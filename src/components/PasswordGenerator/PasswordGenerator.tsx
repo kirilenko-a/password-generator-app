@@ -8,6 +8,7 @@ import type { PasswordGeneratorState } from "../../types/PasswordGeneratorState"
 export const PasswordGenerator = () => {
   const counter = usePasswordStore((state) => state.counter);
   const checkboxes = usePasswordStore((state) => state.checkboxes);
+  const updatePassword = usePasswordStore((state) => state.updatePassword);
 
   const availableCheckboxes = Object.entries(checkboxes)
     .filter((checkbox) => checkbox[1])
@@ -39,12 +40,17 @@ export const PasswordGenerator = () => {
     return password;
   };
 
+  const handleGenerate = () => {
+    const password = getRandomPassword();
+    updatePassword(password);
+  };
+
   return (
     <main className="bg-grey-950 grid min-h-screen px-4 md:px-0">
       <div className="grid gap-4 self-center md:w-135 md:gap-8 md:justify-self-center">
         <AppTitle title="Password Generator" />
         <PasswordField />
-        <SettingsSection />
+        <SettingsSection onClick={handleGenerate} />
       </div>
     </main>
   );

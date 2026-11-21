@@ -1,9 +1,10 @@
+import type { SettingsSectionProps } from "../../types/SettingsSectionProps";
 import { Button } from "../Button";
 import { CharacterLength } from "../CharacterLength";
 import { CheckboxList } from "../CheckboxList";
 import { StrengthField } from "../StrengthField";
 
-export const SettingsSection = () => {
+export const SettingsSection = ({ onClick }: SettingsSectionProps) => {
   return (
     <section className="bg-grey-800 grid gap-8 p-4 md:px-8 md:py-6">
       <CharacterLength
@@ -17,7 +18,7 @@ export const SettingsSection = () => {
       <CheckboxList />
 
       <StrengthField />
-      <Button title="GENERATE" />
+      <Button title="GENERATE" onClick={onClick} />
     </section>
   );
 };
