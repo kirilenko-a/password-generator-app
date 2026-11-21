@@ -1,11 +1,20 @@
 import { create } from "zustand";
+import type { PasswordGeneratorState } from "../types/PasswordGeneratorState";
 
-interface LengthCounterState {
-  counter: number;
-  updateCounter: (value: number) => void;
-}
-
-export const usePasswordStore = create<LengthCounterState>((set) => ({
+export const usePasswordStore = create<PasswordGeneratorState>((set) => ({
   counter: 1,
   updateCounter: (value) => set({ counter: value }),
+  checkboxes: {
+    uppercase: false,
+    lowercase: false,
+    numbers: false,
+    symbols: false,
+  },
+  updateCheckbox: (id) =>
+    set((state) => ({
+      checkboxes: {
+        ...state.checkboxes,
+        [id]: !state.checkboxes[id],
+      },
+    })),
 }));
