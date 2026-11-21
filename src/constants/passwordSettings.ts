@@ -4,3 +4,10 @@ export const passwordSettings = [
   { id: "numbers", label: "Include Numbers" },
   { id: "symbols", label: "Include Symbols" },
 ];
+
+export const passwordValues = {
+  uppercase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+  lowercase: "abcdefghijklmnopqrstuvwxyz",
+  numbers: "0123456789",
+  symbols: "!@#$%^&*()_-+=[]{}|?",
+};

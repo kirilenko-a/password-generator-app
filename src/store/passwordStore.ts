@@ -17,4 +17,6 @@ export const usePasswordStore = create<PasswordGeneratorState>((set) => ({
         [id]: !state.checkboxes[id],
       },
     })),
+  password: "P4$5W0rD!",
+  updatePassword: (password) => set({ password }),
 }));

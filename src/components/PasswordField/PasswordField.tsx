@@ -1,9 +1,10 @@
 import { useState } from "react";
-import type { PasswordFieldProps } from "../../types/PasswordFieldProps";
 import { Icon } from "../Icon";
+import { usePasswordStore } from "../../store/passwordStore";
 
-export const PasswordField = ({ password }: PasswordFieldProps) => {
+export const PasswordField = () => {
   const [isCopied, setIsCopied] = useState(false);
+  const password = usePasswordStore((state) => state.password);
 
   const handleClick = async () => {
     try {

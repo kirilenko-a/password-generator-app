@@ -8,4 +8,6 @@ export interface PasswordGeneratorState {
     symbols: boolean;
   };
   updateCheckbox: (id: keyof PasswordGeneratorState["checkboxes"]) => void;
+  password: string;
+  updatePassword: (password: string) => void;
 }
