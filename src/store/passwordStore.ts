@@ -19,4 +19,6 @@ export const usePasswordStore = create<PasswordGeneratorState>((set) => ({
     })),
   password: "P4$5W0rD!",
   updatePassword: (password) => set({ password }),
+  passwordStrength: "",
+  updatePasswordStrength: (strength) => set({ passwordStrength: strength }),
 }));

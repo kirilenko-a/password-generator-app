@@ -11,3 +11,10 @@ export const passwordValues = {
   numbers: "0123456789",
   symbols: "!@#$%^&*()_-+=[]{}|?",
 };
+
+export const passwordStrengthValues = {
+  tooWeak: "TOO WEAK",
+  weak: "WEAK",
+  medium: "MEDIUM",
+  strong: "STRONG",
+};

@@ -3,12 +3,18 @@ import { AppTitle } from "../AppTitle";
 import { PasswordField } from "../PasswordField";
 import { SettingsSection } from "../SettingsSection";
 import { passwordValues } from "../../constants/passwordSettings";
+import { passwordStrengthValues } from "../../constants/passwordSettings";
+
 import type { PasswordGeneratorState } from "../../types/PasswordGeneratorState";
 
 export const PasswordGenerator = () => {
-  const counter = usePasswordStore((state) => state.counter);
+  const passwordLength = usePasswordStore((state) => state.counter);
   const checkboxes = usePasswordStore((state) => state.checkboxes);
+  const passwordState = usePasswordStore((state) => state.password);
   const updatePassword = usePasswordStore((state) => state.updatePassword);
+  const updatePasswordStrength = usePasswordStore(
+    (state) => state.updatePasswordStrength,
+  );
 
   const availableCheckboxes = Object.entries(checkboxes)
     .filter((checkbox) => checkbox[1])
@@ -23,12 +29,12 @@ export const PasswordGenerator = () => {
     const allChars = filteredValues.join("");
 
     if (!allChars) {
-      return "";
+      return passwordState;
     }
 
     let password = "";
 
-    const array = new Uint32Array(counter);
+    const array = new Uint32Array(passwordLength);
 
     window.crypto.getRandomValues(array);
 
@@ -37,12 +43,65 @@ export const PasswordGenerator = () => {
 
       password += allChars[randomIndex];
     }
+
     return password;
+  };
+
+  const checkboxesAmount = Object.entries(checkboxes).filter(
+    (checkbox) => checkbox[1],
+  ).length;
+
+  const calculatePasswordStrength = () => {
+    let strength = 1;
+
+    if (passwordLength <= 4) {
+      return strength;
+    }
+
+    if (passwordLength >= 8) {
+      strength = 2;
+    }
+
+    if (passwordLength >= 12) {
+      strength = 3;
+    }
+
+    if (checkboxesAmount >= 3) {
+      strength++;
+    }
+
+    return strength;
+  };
+
+  const handlePasswordStrength = () => {
+    const passwordStrengthNumber = calculatePasswordStrength();
+    let strength = "";
+
+    if (passwordStrengthNumber === 1) {
+      strength = passwordStrengthValues.tooWeak;
+    }
+
+    if (passwordStrengthNumber === 2) {
+      strength = passwordStrengthValues.weak;
+    }
+
+    if (passwordStrengthNumber === 3) {
+      strength = passwordStrengthValues.medium;
+    }
+
+    if (passwordStrengthNumber === 4) {
+      strength = passwordStrengthValues.strong;
+    }
+
+    if (checkboxesAmount) {
+      updatePasswordStrength(strength);
+    }
   };
 
   const handleGenerate = () => {
     const password = getRandomPassword();
     updatePassword(password);
+    handlePasswordStrength();
   };
 
   return (
