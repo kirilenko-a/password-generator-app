@@ -32,7 +32,7 @@ A responsive password generator built with React, TypeScript, and Tailwind CSS. 
 
 ## Links
 
-- Live: [GitHub Pages](https://password-generator-app-theta.vercel.app/)
+- Live: [Vercel](https://password-generator-app-theta.vercel.app/)
 - Code: [GitHub](https://github.com/kirilenko-a/password-generator-app)
 - Frontend Mentor Challenge: [Frontend Mentor](https://www.frontendmentor.io/challenges/password-generator-app-Mr8CLycqjh)
 
