@@ -2,10 +2,9 @@ import { usePasswordStore } from "../../store/passwordStore";
 import { AppTitle } from "../AppTitle";
 import { PasswordField } from "../PasswordField";
 import { SettingsSection } from "../SettingsSection";
-import { passwordValues } from "../../constants/passwordSettings";
-import { passwordStrengthValues } from "../../constants/passwordSettings";
-
-import type { PasswordGeneratorState } from "../../types/PasswordGeneratorState";
+import { calculatePasswordStrength } from "../../utils/calculatePasswordStrength";
+import { getRandomPassword } from "../../utils/generatePassword";
+import { getPasswordStrengthTitle } from "../../utils/getPasswordStrengthTitle";
 
 export const PasswordGenerator = () => {
   const passwordLength = usePasswordStore((state) => state.counter);
@@ -15,101 +14,34 @@ export const PasswordGenerator = () => {
   const updatePasswordStrength = usePasswordStore(
     (state) => state.updatePasswordStrength,
   );
-
   const updatePasswordStrengthTitle = usePasswordStore(
     (state) => state.updatePasswordStrengthTitle,
   );
-
-  const availableCheckboxes = Object.entries(checkboxes)
-    .filter((checkbox) => checkbox[1])
-    .map((el) => el[0]);
-
-  const filteredValues = availableCheckboxes.map(
-    (value) =>
-      passwordValues[value as keyof PasswordGeneratorState["checkboxes"]],
-  );
-
-  const getRandomPassword = () => {
-    const allChars = filteredValues.join("");
-
-    if (!allChars) {
-      return passwordState;
-    }
-
-    let password = "";
-
-    const array = new Uint32Array(passwordLength);
-
-    window.crypto.getRandomValues(array);
-
-    for (let i = 0; i < array.length; i++) {
-      const randomIndex = array[i] % allChars.length;
-
-      password += allChars[randomIndex];
-    }
-
-    return password;
-  };
 
   const checkboxesAmount = Object.entries(checkboxes).filter(
     (checkbox) => checkbox[1],
   ).length;
 
-  const calculatePasswordStrength = () => {
-    let strength = 0;
-
-    if (!checkboxesAmount) {
-      return strength;
-    }
-
-    if (passwordLength < 8) {
-      strength = 1;
-    }
-
-    if (passwordLength >= 8) {
-      strength = 2;
-    }
-
-    if (passwordLength >= 14) {
-      strength = 3;
-    }
-
-    if (checkboxesAmount >= 3) {
-      strength++;
-    }
-
-    return strength;
-  };
-
   const handlePasswordStrength = () => {
-    const passwordStrengthNumber = calculatePasswordStrength();
+    const passwordStrengthNumber = calculatePasswordStrength(
+      checkboxesAmount,
+      passwordLength,
+    );
     updatePasswordStrength(passwordStrengthNumber);
 
-    let strengthTitle: string;
+    const passwordStrengthTitle = getPasswordStrengthTitle(
+      passwordStrengthNumber,
+    );
 
-    switch (passwordStrengthNumber) {
-      case 1:
-        strengthTitle = passwordStrengthValues.tooWeak;
-        break;
-      case 2:
-        strengthTitle = passwordStrengthValues.weak;
-        break;
-      case 3:
-        strengthTitle = passwordStrengthValues.medium;
-        break;
-      case 4:
-        strengthTitle = passwordStrengthValues.strong;
-        break;
-      default:
-        strengthTitle = passwordStrengthValues.empty;
-        break;
-    }
-
-    updatePasswordStrengthTitle(strengthTitle);
+    updatePasswordStrengthTitle(passwordStrengthTitle);
   };
 
   const handleGenerate = () => {
-    const password = getRandomPassword();
+    const password = getRandomPassword(
+      checkboxes,
+      passwordState,
+      passwordLength,
+    );
     updatePassword(password);
     handlePasswordStrength();
   };
