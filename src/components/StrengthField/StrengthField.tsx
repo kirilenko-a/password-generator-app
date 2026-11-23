@@ -1,9 +1,11 @@
+import { strengthColors } from "../../constants/passwordSettings";
 import { usePasswordStore } from "../../store/passwordStore";
 
 export const StrengthField = () => {
   const passwordStrengthTitle = usePasswordStore(
     (state) => state.passwordStrengthTitle,
   );
+  const passwordStrength = usePasswordStore((state) => state.passwordStrength);
 
   return (
     <div className="bg-grey-850 flex items-center justify-between px-4 py-3.5">
@@ -16,7 +18,14 @@ export const StrengthField = () => {
 
         <div className="flex gap-2">
           {Array.from({ length: 4 }, (_, index) => (
-            <div key={index} className="border-grey-200 h-7 w-2.5 border-2" />
+            <div
+              key={index}
+              className={`border-grey-200 h-7 w-2.5 ${
+                index < passwordStrength
+                  ? strengthColors[passwordStrength]
+                  : "border-2 bg-transparent"
+              }`}
+            />
           ))}
         </div>
       </div>
