@@ -10,6 +10,8 @@ export interface PasswordGeneratorState {
   updateCheckbox: (id: keyof PasswordGeneratorState["checkboxes"]) => void;
   password: string;
   updatePassword: (password: string) => void;
-  passwordStrength: string;
-  updatePasswordStrength: (strength: string) => void;
+  passwordStrength: number;
+  updatePasswordStrength: (strength: number) => void;
+  passwordStrengthTitle: string;
+  updatePasswordStrengthTitle: (strength: string) => void;
 }
