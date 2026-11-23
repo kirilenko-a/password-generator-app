@@ -21,7 +21,10 @@ export const PasswordField = () => {
 
   return (
     <div className="bg-grey-800 flex items-center justify-between p-4 md:px-8 md:py-4.75">
-      <p className="text-grey-700 preset-2 md:preset-1 min-w-0 flex-1 truncate whitespace-nowrap">
+      <p
+        className="text-grey-700 preset-2 md:preset-1 min-w-0 flex-1 truncate whitespace-nowrap"
+        aria-live="polite"
+      >
         {password}
       </p>
 

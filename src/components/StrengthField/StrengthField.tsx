@@ -11,12 +11,15 @@ export const StrengthField = () => {
     <div className="bg-grey-850 flex items-center justify-between px-4 py-3.5">
       <p className="text-grey-600 preset-4 md:preset-3">STRENGTH</p>
 
-      <div className="flex items-center gap-4" aria-hidden="true">
-        <p className="preset-4 md:preset-2 text-grey-200 text-center">
+      <div className="flex items-center gap-4">
+        <p
+          className="preset-4 md:preset-2 text-grey-200 text-center"
+          aria-live="polite"
+        >
           {passwordStrengthTitle}
         </p>
 
-        <div className="flex gap-2">
+        <div className="flex gap-2" aria-hidden="true">
           {Array.from({ length: 4 }, (_, index) => (
             <div
               key={index}
