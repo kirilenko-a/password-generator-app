@@ -1,1 +1,1 @@
-# Password generator app
+# Password Generator App

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Icon } from "../Icon";
 import { usePasswordStore } from "../../store/passwordStore";
+import CopyIcon from "../../assets/icons/icon-copy.svg?react";
 
 export const PasswordField = () => {
   const [isCopied, setIsCopied] = useState(false);
@@ -41,7 +41,7 @@ export const PasswordField = () => {
           aria-label="Copy password"
           onClick={handleClick}
         >
-          <Icon path="/images/icon-copy.svg" width="w-4.25" height="h-5" />
+          <CopyIcon className="h-5 w-4.25" />
         </button>
       </div>
     </div>
