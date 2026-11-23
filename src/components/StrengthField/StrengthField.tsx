@@ -10,7 +10,9 @@ export const StrengthField = () => {
       <p className="text-grey-600 preset-4 md:preset-3">STRENGTH</p>
 
       <div className="flex items-center gap-4" aria-hidden="true">
-        <p className="preset-2 text-grey-200">{passwordStrengthTitle}</p>
+        <p className="preset-4 md:preset-2 text-grey-200 text-center">
+          {passwordStrengthTitle}
+        </p>
 
         <div className="flex gap-2">
           {Array.from({ length: 4 }, (_, index) => (
