@@ -25,7 +25,12 @@ export const PasswordField = () => {
 
       <div className="flex items-center gap-2 md:gap-4">
         {isCopied && (
-          <span className="preset-4 md:preset-3 text-green-200">COPIED</span>
+          <span
+            className="preset-4 md:preset-3 text-green-200"
+            aria-live="polite"
+          >
+            COPIED
+          </span>
         )}
 
         <button
