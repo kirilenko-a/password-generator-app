@@ -16,6 +16,10 @@ export const PasswordGenerator = () => {
     (state) => state.updatePasswordStrength,
   );
 
+  const updatePasswordStrengthTitle = usePasswordStore(
+    (state) => state.updatePasswordStrengthTitle,
+  );
+
   const availableCheckboxes = Object.entries(checkboxes)
     .filter((checkbox) => checkbox[1])
     .map((el) => el[0]);
@@ -52,17 +56,21 @@ export const PasswordGenerator = () => {
   ).length;
 
   const calculatePasswordStrength = () => {
-    let strength = 1;
+    let strength = 0;
 
-    if (passwordLength <= 4) {
+    if (!checkboxesAmount) {
       return strength;
+    }
+
+    if (passwordLength < 8) {
+      strength = 1;
     }
 
     if (passwordLength >= 8) {
       strength = 2;
     }
 
-    if (passwordLength >= 12) {
+    if (passwordLength >= 14) {
       strength = 3;
     }
 
@@ -75,27 +83,29 @@ export const PasswordGenerator = () => {
 
   const handlePasswordStrength = () => {
     const passwordStrengthNumber = calculatePasswordStrength();
-    let strength = "";
+    updatePasswordStrength(passwordStrengthNumber);
 
-    if (passwordStrengthNumber === 1) {
-      strength = passwordStrengthValues.tooWeak;
+    let strengthTitle: string;
+
+    switch (passwordStrengthNumber) {
+      case 1:
+        strengthTitle = passwordStrengthValues.tooWeak;
+        break;
+      case 2:
+        strengthTitle = passwordStrengthValues.weak;
+        break;
+      case 3:
+        strengthTitle = passwordStrengthValues.medium;
+        break;
+      case 4:
+        strengthTitle = passwordStrengthValues.strong;
+        break;
+      default:
+        strengthTitle = passwordStrengthValues.empty;
+        break;
     }
 
-    if (passwordStrengthNumber === 2) {
-      strength = passwordStrengthValues.weak;
-    }
-
-    if (passwordStrengthNumber === 3) {
-      strength = passwordStrengthValues.medium;
-    }
-
-    if (passwordStrengthNumber === 4) {
-      strength = passwordStrengthValues.strong;
-    }
-
-    if (checkboxesAmount) {
-      updatePasswordStrength(strength);
-    }
+    updatePasswordStrengthTitle(strengthTitle);
   };
 
   const handleGenerate = () => {
