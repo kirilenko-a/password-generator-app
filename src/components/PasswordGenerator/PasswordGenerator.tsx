@@ -50,7 +50,7 @@ export const PasswordGenerator = () => {
   return (
     <div className="bg-grey-950 flex min-h-screen flex-col justify-center">
       <main className="flex flex-1 items-center justify-center px-4 md:px-0">
-        <div className="flex min-w-0 flex-col justify-center gap-4 md:w-135 md:gap-8 md:justify-self-center">
+        <div className="flex w-full min-w-0 flex-col justify-center gap-4 md:w-135 md:gap-8 md:justify-self-center">
           <AppTitle title="Password Generator" />
           <PasswordField />
           <SettingsSection onClick={handleGenerate} />
