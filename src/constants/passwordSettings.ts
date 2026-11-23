@@ -19,3 +19,10 @@ export const passwordStrengthValues = {
   medium: "MEDIUM",
   strong: "STRONG",
 };
+
+export const strengthColors: Record<number, string> = {
+  1: "bg-red-500",
+  2: "bg-orange-400",
+  3: "bg-yellow-400",
+  4: "bg-green-200",
+};
