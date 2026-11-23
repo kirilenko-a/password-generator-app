@@ -5,6 +5,7 @@ import { SettingsSection } from "../SettingsSection";
 import { calculatePasswordStrength } from "../../utils/calculatePasswordStrength";
 import { getRandomPassword } from "../../utils/generatePassword";
 import { getPasswordStrengthTitle } from "../../utils/getPasswordStrengthTitle";
+import { Footer } from "../Footer/Footer";
 
 export const PasswordGenerator = () => {
   const passwordLength = usePasswordStore((state) => state.counter);
@@ -47,12 +48,16 @@ export const PasswordGenerator = () => {
   };
 
   return (
-    <main className="bg-grey-950 grid min-h-screen px-4 md:px-0">
-      <div className="flex min-w-0 flex-col justify-center gap-4 md:w-135 md:gap-8 md:justify-self-center">
-        <AppTitle title="Password Generator" />
-        <PasswordField />
-        <SettingsSection onClick={handleGenerate} />
-      </div>
-    </main>
+    <div className="bg-grey-950 flex min-h-screen flex-col justify-center">
+      <main className="flex flex-1 items-center justify-center px-4 md:px-0">
+        <div className="flex min-w-0 flex-col justify-center gap-4 md:w-135 md:gap-8 md:justify-self-center">
+          <AppTitle title="Password Generator" />
+          <PasswordField />
+          <SettingsSection onClick={handleGenerate} />
+        </div>
+      </main>
+
+      <Footer />
+    </div>
   );
 };
