@@ -3,7 +3,7 @@ export const passwordSettings = [
   { id: "lowercase", label: "Include Lowercase Letters" },
   { id: "numbers", label: "Include Numbers" },
   { id: "symbols", label: "Include Symbols" },
-];
+] as const;
 
 export const passwordValues = {
   uppercase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
@@ -13,6 +13,7 @@ export const passwordValues = {
 };
 
 export const passwordStrengthValues = {
+  empty: "SELECT AN OPTION",
   tooWeak: "TOO WEAK",
   weak: "WEAK",
   medium: "MEDIUM",
